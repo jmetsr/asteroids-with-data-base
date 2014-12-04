@@ -5,20 +5,32 @@
 
   var Game = Asteroids.game = function (){
     this.asteroidArr = [];
+    this.bullets = [];
     this.points = 0;
     this.addAsteroids();
     this.ship = new Asteroids.Ship(this.randomPosition(),this);
-  //  this.allObjects = this.asteroidArr.concat([this.ship]);
   }
 
   Game.DIM_X = 500;
   Game.DIM_Y = 500;
   Game.NUM_ASTEROIDS = 4;
+  Game.prototype.dim_x = function(){
+    return Game.DIM_X
+  }
+  Game.prototype.dim_y = function(){
+    return Game.DIM_Y
+  }
 
   Game.prototype.addAsteroids = function (){
     while (this.asteroidArr.length < Game.NUM_ASTEROIDS) {
       this.asteroidArr.push(new Asteroids.Asteroid(this.randomPosition(),this))
     }
+    this.hasGun = false;
+    this.gun = new Asteroids.Gun([100,100],this);
+    this.guns = [this.gun];
+    this.level = Game.NUM_ASTEROIDS/2-1;
+    //this.block = new Asteroids.Block([200,200],this);
+    //this.blocks = [this.block];
   }
 
   Game.prototype.draw = function(c){
@@ -47,7 +59,6 @@
       pos[0] += Game.DIM_X;
     }
 
-
     if (pos[1] > Game.DIM_Y) {
       pos[1] -= Game.DIM_Y;
     }
@@ -70,15 +81,34 @@
     this.moveObjects();
     this.checkCollisions();
     this.points += 1;
-    $('#points').html(this.points + " points")
-  };
+    $('#points').html(this.points + " points");
+    $('#level').html("level " + this.level);
+    if (this.hasGun && key.isPressed("space")){
+      this.ship.fireBullet();
+    }
+  }
 
-  Game.prototype.remove = function(asteroid) {
-    var index = this.asteroidArr.indexOf(asteroid);
-    this.asteroidArr.splice(index, 1);
+  Game.prototype.remove = function(obj) {
+    if (obj instanceof Asteroids.Asteroid){
+      this.points += 1000;
+      var index = this.asteroidArr.indexOf(obj);
+      this.asteroidArr.splice(index, 1);
+      if (this.asteroidArr.length == 0){
+        Game.NUM_ASTEROIDS += 2;
+        this.addAsteroids();
+      }
+    }
+    if (obj instanceof Asteroids.Bullet) {
+      var index = this.bullets.indexOf(obj);
+      this.bullets.splice(index, 1);
+    }
+    if (obj instanceof Asteroids.Gun) {
+      this.gun = null;
+    }
   }
 
    Game.prototype.allObjects = function() {
-     return [this.ship].concat(this.asteroidArr);
+  //   return [this.ship].concat(this.asteroidArr).concat(this.bullets).concat(this.guns).concat(this.blocks);
+    return [this.ship].concat(this.asteroidArr).concat(this.bullets).concat(this.guns);
    }
 })();

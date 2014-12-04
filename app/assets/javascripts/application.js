@@ -16,5 +16,8 @@
 //= require moving_object.js
 //= require asteroid.js
 //= require game.js
+//= require bullet.js
 //= require ship.js
+//= require gun.js
+//= require block.js
 //= require gameview.js

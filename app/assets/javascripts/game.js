@@ -83,7 +83,7 @@
     this.points += 1;
     $('#points').html(this.points + " points");
     $('#level').html("level " + this.level);
-    if (this.hasGun && key.isPressed("space")){
+    if (this.hasGun){
       this.ship.fireBullet();
     }
   }

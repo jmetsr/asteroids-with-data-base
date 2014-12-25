@@ -3,39 +3,10 @@
   <head>
     <title>Asteroids</title>
 
-    <style>
-      html, body, canvas {
-        padding: 0px;
-        margin: 0px;
-      }
-      .scores {
-       /* position: relative;*/
-        bottom: 500px;
-        width: 460px;
-        height: 40px;
-        margin: 8px;
-        overflow: scroll;   
-      }
-      .lev {
-        position: absolute;
-        bottom: 100px;
-        left: 500px;
-      }
-      #points {
-        margin: 8px;
-      }
-      html {overflow-y: scroll;}
-      #canvas {
-        border: 1px solid blue;
-        margin: 20px;
-        background: #C0C0C0;
-      }
 
-    </style>
   </head>
 
   <body>
-
     <canvas width="500" height="500" id="canvas"></canvas>
     <script>
       var canvas = document.getElementById('canvas');
@@ -45,6 +16,65 @@
     <div id="points">Points</div>
     <div id="scores" class="scores">Scores: </div>
     <div id="level" class="lev">Level: </div>
+    <div class="save">
+    <label>
+      Your Name
+    <input type="text" id="name">
+    </label>
+    <button onclick="saveScores()">save scores</button><br><br>
+    <div id="message"></div>
+    </div>
+
+  <script>
+  function printMessage(){
+    document.getElementById("message").innerHTML = "Scores Saved";
+    setTimeout(function() {
+       document.getElementById("message").innerHTML = ""
+    }, 2000)
+  }
+
+  function saveScores() {
+    var name = document.getElementById("name").value;
+    
+    var string = document.getElementById("scores").innerHTML.substring(8);
+    var array = string.split("&nbsp;&nbsp;&nbsp;");
+    var scores = []
+    for (var i = 0; i < array.length-1; i++){
+      scores.push(Number(array[i]));
+    }
+    for (var i = 0; i < scores.length; i++){
+      saveScore(name, scores[i]);
+    }
+    printMessage()
+    document.getElementById("scores").innerHTML = "Scores: "
+  }
+
+  function saveScore(person,number) {
+    $.ajax({
+      type: "POST",
+      url: "/scores",
+      data: {
+        points: number,
+        name: person
+      }, 
+      success: function () { }
+    })
+  }
+  
+  </script>
+
+  <div class="highscores">
+  <h3>High Scores </h3>
+  <ul>
+  <% scores = @scores.sort{ |a, b| b.points <=> a.points } %>
+  <% rank = 1 %>
+  <% while rank < 31 %>
+    <% score = scores[rank-1] %>
+    <li><%= "#{rank}) #{score.name}: #{score.points}" %></li>
+    <% rank += 1 %>
+  <% end %>
+  </ul>
+  </div>
 
   </body>
 </html>

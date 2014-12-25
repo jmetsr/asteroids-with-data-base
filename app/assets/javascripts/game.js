@@ -80,7 +80,7 @@
   Game.prototype.step = function() {
     this.moveObjects();
     this.checkCollisions();
-    this.points += 1;
+    this.points += this.asteroidArr.length;
     $('#points').html(this.points + " points");
     $('#level').html("level " + this.level);
     if (this.hasGun){
@@ -90,7 +90,7 @@
 
   Game.prototype.remove = function(obj) {
     if (obj instanceof Asteroids.Asteroid){
-      this.points += 1000;
+      this.points += 10000;
       var index = this.asteroidArr.indexOf(obj);
       this.asteroidArr.splice(index, 1);
       if (this.asteroidArr.length == 0){

@@ -13,7 +13,7 @@
   Ship.prototype.relocate = function(){
     this.pos = this.game.randomPosition();
     this.vel = [0,0];
-    $('#scores').append(this.game.points+ " ")
+    $('#scores').append(this.game.points+ "&nbsp;&nbsp;&nbsp;")
     this.game.points = 0;
   }
   Ship.prototype.power = function(impulse){

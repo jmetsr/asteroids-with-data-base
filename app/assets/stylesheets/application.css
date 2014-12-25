@@ -1,15 +1,37 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+      html, body, canvas {
+        padding: 0px;
+        margin: 0px;
+      }
+      li {
+        list-style: none;
+      }
+      .scores {
+       /* position: relative;*/
+        bottom: 500px;
+        width: 460px;
+        height: 17px;
+        margin: 8px;
+        overflow: scroll;   
+      }
+      .lev {
+        position: absolute;
+        bottom: 100px;
+        left: 500px;
+      }
+      #points {
+        margin: 8px;
+      }
+      html {overflow-y: scroll;}
+      #canvas {
+        border: 1px solid blue;
+        margin: 20px;
+        background: #C0C0C0;
+      }
+      .save {
+        margin: 10px;
+      }
+      .highscores {
+        position: absolute;
+        right: 580px;
+        top: 10px;
+      }

@@ -68,7 +68,7 @@
   <ul>
   <% scores = @scores.sort{ |a, b| b.points <=> a.points } %>
   <% rank = 1 %>
-  <% while rank < 31 %>
+  <% while rank < 31 && rank-1 < scores.length %>
     <% score = scores[rank-1] %>
     <li><%= "#{rank}) #{score.name}: #{score.points}" %></li>
     <% rank += 1 %>

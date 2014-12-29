@@ -6,12 +6,13 @@
         list-style: none;
       }
       .scores {
-       position: absolute;
-       bottom: 20px;
-        width: 460px;
-        height: 60px;
+        position: absolute;
+        left: 1000px;
+        top: 30px;
+        width: 300px;
+        height: 500px;
         margin: 8px;
-        overflow: visible;   
+        overflow: scroll;   
       }
       .lev {
         position: absolute;
@@ -21,7 +22,7 @@
       #points {
         margin: 8px;
       }
-      html {overflow-y: visible;}
+      html {overflow-y: scroll;}
       #canvas {
         border: 1px solid blue;
         margin: 20px;

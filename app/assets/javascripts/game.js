@@ -7,8 +7,11 @@
     this.asteroidArr = [];
     this.bullets = [];
     this.points = 0;
-    this.addAsteroids();
+    this.steps = 0;
+    
     this.ship = new Asteroids.Ship(this.randomPosition(),this);
+    this.addAsteroids();
+    this.pauses = 10;
   }
 
   Game.DIM_X = 500;
@@ -29,6 +32,13 @@
     this.gun = new Asteroids.Gun([100,100],this);
     this.guns = [this.gun];
     this.level = Game.NUM_ASTEROIDS/2-1;
+    this.ship.immune = true
+    var that = this;
+    setTimeout(function(){ that.ship.immune = false }, 3000);
+    if (this.steps != 0){
+      this.points += (Math.pow(this.asteroidArr.length,2.5)*80000)/this.steps
+    }
+    this.steps = 0;
     //this.block = new Asteroids.Block([200,200],this);
     //this.blocks = [this.block];
   }
@@ -80,7 +90,7 @@
   Game.prototype.step = function() {
     this.moveObjects();
     this.checkCollisions();
-    this.points += this.asteroidArr.length;
+    this.steps +=1;
     $('#points').html(this.points + " points");
     $('#level').html("level " + this.level);
     if (this.hasGun){

@@ -6,10 +6,12 @@
   var GameView = Asteroids.GameView = function(){
     this.game = new Asteroids.game();
     this.paused = false;
+    this.scores = [];
   }
 
   game_view = new GameView();
   GameView.prototype.start = function(){
+    window.scoress = [];
     var that = this;
     game_view.bindKeyHandlers();
     setInterval(function() {
@@ -39,11 +41,11 @@
       game_view.game.ship.power([0,7]);
     });
     key('v',function(){
-      if (that.paused){
-        that.paused = false;
-      } else {
-        that.paused = true;
-      }
+        if (that.paused){
+          that.paused = false;
+        } else {
+          that.paused = true;
+        }
     });
   }
 

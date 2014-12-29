@@ -16,6 +16,7 @@
     <div id="points">Points</div>
     <div id="scores" class="scores">Scores: </div>
     <div id="level" class="lev">Level: </div>
+
     <div class="save">
     <label>
       Your Name
@@ -36,17 +37,21 @@
   function saveScores() {
     var name = document.getElementById("name").value;
     
-    var string = document.getElementById("scores").innerHTML.substring(8);
-    var array = string.split("&nbsp;&nbsp;&nbsp;");
+    var array = window.scoress;
     var scores = []
     for (var i = 0; i < array.length-1; i++){
       scores.push(Number(array[i]));
     }
+    bigenough = function(numb){
+      return numb > 200000
+    }
+    scores = scores.filter(bigenough)
     for (var i = 0; i < scores.length; i++){
       saveScore(name, scores[i]);
     }
     printMessage()
     document.getElementById("scores").innerHTML = "Scores: "
+    window.scoress = [];
   }
 
   function saveScore(person,number) {

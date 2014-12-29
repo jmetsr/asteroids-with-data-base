@@ -48,8 +48,10 @@
 
   MovingObject.prototype.collideWith = function(otherObject) {
     if (this instanceof Asteroids.Ship && otherObject instanceof Asteroids.Asteroid){
-      this.relocate();
-      Asteroids.game.call(this.game) //This resets the game
+      if (!this.immune){
+        this.relocate();
+        Asteroids.game.call(this.game) //This resets the game
+      }
     }
     if (this instanceof Asteroids.Asteroid && otherObject instanceof Asteroids.Bullet){
       this.game.remove(this);

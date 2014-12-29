@@ -36,7 +36,7 @@
     var that = this;
     setTimeout(function(){ that.ship.immune = false }, 3000);
     if (this.steps != 0){
-      this.points += (Math.pow(this.asteroidArr.length,2.5)*80000)/this.steps
+      this.points += Math.round((Math.pow(this.asteroidArr.length,2.5)*80000)/this.steps)
     }
     this.steps = 0;
     //this.block = new Asteroids.Block([200,200],this);

@@ -7,11 +7,11 @@
       }
       .scores {
        position: absolute;
-       bottom: 40px;
+       bottom: 20px;
         width: 460px;
         height: 60px;
         margin: 8px;
-        overflow: scroll;   
+        overflow: visible;   
       }
       .lev {
         position: absolute;
@@ -21,7 +21,7 @@
       #points {
         margin: 8px;
       }
-      html {overflow-y: scroll;}
+      html {overflow-y: visible;}
       #canvas {
         border: 1px solid blue;
         margin: 20px;

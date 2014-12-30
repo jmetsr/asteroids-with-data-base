@@ -7,7 +7,7 @@
       }
       .scores {
         position: absolute;
-        left: 1000px;
+        left: 900px;
         top: 30px;
         width: 300px;
         height: 500px;
@@ -33,6 +33,7 @@
       }
       .highscores {
         position: absolute;
-        right: 580px;
+        left: 580px;
         top: 10px;
+        
       }

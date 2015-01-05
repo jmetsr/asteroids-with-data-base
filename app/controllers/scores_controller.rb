@@ -3,9 +3,13 @@ class ScoresController < ApplicationController
 	skip_before_filter  :verify_authenticity_token
 
 	def create
+		
 		@score = Score.new(score_params)
-		@score.save!
-		render :json => @score
+		if @score.save!
+			render :json => @score
+		else
+        	render json: @score.errors.full_messages, status: :unprocessable_entity
+      	end
 	end
 
 	def index

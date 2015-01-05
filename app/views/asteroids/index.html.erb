@@ -3,16 +3,60 @@
   <head>
     <title>Asteroids</title>
     <script>
-var _prum = [['id', '54a21412abe53d03725cc7aa'],
-             ['mark', 'firstbyte', (new Date()).getTime()]];
-(function() {
-    var s = document.getElementsByTagName('script')[0]
-      , p = document.createElement('script');
-    p.async = 'async';
-    p.src = '//rum-static.pingdom.net/prum.min.js';
-    s.parentNode.insertBefore(p, s);
-})();
-</script>
+  function printMessage(){
+    document.getElementById("message").innerHTML = "Scores Saved";
+    setTimeout(function() {
+       document.getElementById("message").innerHTML = ""
+    }, 2000)
+  }
+  function printFailedMessage(){
+    document.getElementById("message").innerHTML = "Scores Could not be saved. Try again";
+    setTimeout(function() {
+       document.getElementById("message").innerHTML = ""
+    }, 2000)
+  }
+  function bigEnough(number){
+    return number > 400000
+  }
+
+  function saveScores() {
+
+    Asteroids.name = document.getElementById("name").value;
+    
+    var string = document.getElementById("scores").innerHTML.substring(8);
+    var array = string.split("&nbsp;&nbsp;&nbsp;");
+    var scores = []
+    for (var i = 0; i < array.length-1; i++){
+      scores.push(Number(array[i]));
+    }
+    scores = scores.filter(bigEnough);
+    Asteroids.succede = true;
+    for (var i = 0; i < scores.length; i++){
+      $.ajax({
+        type: "POST",
+        url: "/scores",
+        data: {
+          points: scores[i],
+          name: Asteroids.name
+        }, 
+        success: function () {
+          Asteroids.succede = Asteroids.succede || true
+        },
+        error: function () {
+          Asteroids.succede = Asteroids.succede && false
+        },
+        async: false
+      })
+    }
+    console.log(Asteroids.succede);
+    if (Asteroids.succede){
+      printMessage();
+      document.getElementById("scores").innerHTML = "Scores: "
+    } else {
+      printFailedMessage()
+    } 
+  }
+  </script>
 
 
   </head>
@@ -25,64 +69,21 @@ var _prum = [['id', '54a21412abe53d03725cc7aa'],
     </script>
 
     <div id="points">Points</div>
-    
+    <div id="scores" class="scores">Your Scores: </div>
     <div id="level" class="lev">Level: </div>
-
     <div class="save">
     <label>
       Your Name
     <input type="text" id="name">
     </label>
-    <button onclick="saveScores()">save scores</button><br><br>
+    <button onclick="saveScores()">save your scores</button><br><br>
     <div id="message"></div>
     </div>
-    <div id="scores" class="scores">Your Scores: </div>
 
-  <script>
-  function printMessage(){
-    document.getElementById("message").innerHTML = "Scores Saved";
-    setTimeout(function() {
-       document.getElementById("message").innerHTML = ""
-    }, 2000)
-  }
-
-  function saveScores() {
-    var name = document.getElementById("name").value;
-    
-    var array = window.scoress;
-    var scores = []
-    for (var i = 0; i < array.length-1; i++){
-      scores.push(Number(array[i]));
-    }
-    bigenough = function(numb){
-      return numb > 200000
-    }
-    scores = scores.filter(bigenough)
-    for (var i = 0; i < scores.length; i++){
-      saveScore(name, scores[i]);
-      console.log(scores[i]);
-    }
-    printMessage()
-    document.getElementById("scores").innerHTML = "Scores: "
-    window.scoress = [];
-  }
-
-  function saveScore(person,number) {
-    $.ajax({
-      type: "POST",
-      url: "/scores",
-      data: {
-        points: number,
-        name: person
-      }, 
-      success: function () { }
-    })
-  }
   
-  </script>
 
   <div class="highscores">
-  <h3>High Scores </h3>
+  <h3>High Scores</h3>
   <ul>
   <% scores = @scores.sort{ |a, b| b.points <=> a.points } %>
   <% rank = 1 %>

@@ -13,7 +13,14 @@
   Ship.prototype.relocate = function(){
     this.pos = this.game.randomPosition();
     this.vel = [0,0];
-    $('#scores').append(this.game.points+ "&nbsp;&nbsp;&nbsp;")
+
+    var ul = document.getElementById("scorelist");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(window.scoress.length+1 +") " +this.game.points));
+    ul.appendChild(li);
+
+
+
     window.scoress.push(this.game.points)
     this.game.points = 0;
   }

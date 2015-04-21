@@ -1,39 +1,78 @@
       html, body, canvas {
         padding: 0px;
         margin: 0px;
+        overflow: hidden;
+        background-image: url("http://upload.wikimedia.org/wikipedia/commons/a/a2/Polycyclic_Aromatic_Hydrocarbons_In_Space.jpg");
+        color: yellow;
       }
       li {
         list-style: none;
       }
-      .scores {
-        position: absolute;
-        left: 900px;
-        top: 30px;
-        width: 300px;
-        height: 500px;
-        margin: 8px;
-        overflow: scroll;   
+      .scores { /*your scores*/
+    
+        position: relative;
+        left: 50%;
+        text-align: left;
+        margin-left: 260px;
+        padding-top: 10px;
+        bottom: 650px;
+
+        
+      }
+      .yourscoresheading {
+        text-decoration: underline;
       }
       .lev {
-        position: absolute;
-        bottom: 100px;
-        left: 500px;
+        position: relative;
+        left: 67%;
+        bottom: 20px;
+        text-align: left;
       }
       #points {
-        margin: 8px;
+        position: relative;
+        left: 67%;
+        bottom: 20px;
+        text-align: left;
       }
-      html {overflow-y: scroll;}
+      
       #canvas {
         border: 1px solid blue;
         margin: 20px;
         background: #C0C0C0;
+        position: relative;
+        left: 50%;
+        margin-left: -250px;
       }
       .save {
-        margin: 10px;
+        position: relative;
+        left: 50%;
+        margin-left: -240px;
+        bottom: 40px;
       }
       .highscores {
-        position: absolute;
-        left: 700px;
-        top: 10px;
-        
+        position: relative;
+        left: 50%;
+        margin-left: 260px;
+        bottom: 620px;
+        text-align: left;       
+      }
+      .highscore-hedding {
+        text-decoration: underline;
+
+      }
+      .start-button {
+        height: 50px;
+        width: 100px;
+        position: relative;
+        left: 20%;
+      }
+      h1 {
+        position: relative;
+        top: 40px;
+        text-align: center;
+      }
+      h3 {
+        text-align: center;
+        position: relative;
+        top: 20px;
       }

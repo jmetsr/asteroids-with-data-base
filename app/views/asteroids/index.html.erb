@@ -2,7 +2,12 @@
 <html>
   <head>
     <title>Asteroids</title>
-    <h1>Get the green gun and shoot all the asteroids!!!!</h1>
+    <h1>Asteroids </h1>
+    <h3>Get the green gun & press spacebar to shoot<br> Press v to pause<br>
+         <button onclick="game_view.paused = false">Start</button>
+    </h3>
+
+
     <script>
   function printMessage(){
     document.getElementById("message").innerHTML = "Scores Saved";
@@ -17,20 +22,21 @@
     }, 2000)
   }
   function bigEnough(number){
-    return number > 400000
+    return number > 100000
   }
 
   function saveScores() {
 
-    Asteroids.name = document.getElementById("name").value;
+     Asteroids.name = document.getElementById("name").value;
     
-    var string = document.getElementById("scores").innerHTML.substring(8);
-    var array = string.split("&nbsp;&nbsp;&nbsp;");
+
+    var array = window.scoress;
     var scores = []
-    for (var i = 0; i < array.length-1; i++){
+    for (var i = 0; i < array.length; i++){
       scores.push(Number(array[i]));
+      console.log(window.scoress[0])
     }
-    scores = scores.filter(bigEnough);
+     scores = scores.filter(bigEnough); //only saves large scores because otherwise database would get too full
     Asteroids.succede = true;
     for (var i = 0; i < scores.length; i++){
       $.ajax({
@@ -52,7 +58,6 @@
     console.log(Asteroids.succede);
     if (Asteroids.succede){
       printMessage();
-      document.getElementById("scores").innerHTML = "Scores: "
     } else {
       printFailedMessage()
     } 
@@ -69,8 +74,13 @@
       var c = canvas.getContext('2d');
     </script>
 
-    <div id="points">Points</div>
-    <div id="scores" class="scores">Your Scores: </div>
+    <div id="points">Points:</div>
+
+
+
+
+
+    
     <div id="level" class="lev">Level: </div>
     <div class="save">
     <label>
@@ -84,16 +94,21 @@
   
 
   <div class="highscores">
-  <h3>High Scores</h3>
+  <h2 class="highscore-hedding">High Scores</h2>
   <ul>
   <% scores = @scores.sort{ |a, b| b.points <=> a.points } %>
   <% rank = 1 %>
-  <% while rank < 31 && rank-1 < scores.length %>
+  <% while rank < 11 && rank-1 < scores.length %>
     <% score = scores[rank-1] %>
     <li><%= "#{rank}) #{score.name}: #{score.points}" %></li>
     <% rank += 1 %>
   <% end %>
   </ul>
+  </div>
+  <div id="scores" class="scores"><h2 class="yourscoresheading">Your Scores </h2>
+    <ul id="scorelist">
+
+    </ul>
   </div>
 
   </body>

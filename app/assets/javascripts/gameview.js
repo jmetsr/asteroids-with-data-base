@@ -5,7 +5,7 @@
 
   var GameView = Asteroids.GameView = function(){
     this.game = new Asteroids.game();
-    this.paused = false;
+    this.paused = true;
     this.scores = [];
   }
 

@@ -51,6 +51,9 @@
       if (!this.immune){
         this.relocate();
         Asteroids.game.call(this.game) //This resets the game
+        game_view.paused = true
+        alert("GAME OVER!!!!!!!!!, press START to play again")
+
       }
     }
     if (this instanceof Asteroids.Asteroid && otherObject instanceof Asteroids.Bullet){

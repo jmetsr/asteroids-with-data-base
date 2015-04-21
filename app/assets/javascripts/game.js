@@ -11,7 +11,9 @@
     
     this.ship = new Asteroids.Ship(this.randomPosition(),this);
     this.addAsteroids();
-    this.pauses = 10;
+   
+    console.log("restarted game")
+    
   }
 
   Game.DIM_X = 500;
@@ -93,7 +95,7 @@
     this.steps +=1;
     $('#points').html(this.points + " points");
     $('#level').html("level " + this.level);
-    if (this.hasGun){
+    if (this.hasGun && key.isPressed("space")){
       this.ship.fireBullet();
     }
   }

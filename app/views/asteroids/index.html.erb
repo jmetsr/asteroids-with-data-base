@@ -2,11 +2,6 @@
 <html>
   <head>
     <title>Asteroids</title>
-    <h1>Asteroids </h1>
-    <h3>Get the green gun & press spacebar to shoot<br> Press v to pause<br>
-         <button onclick="game_view.paused = false">Start</button>
-    </h3>
-
 
     <script>
   function printMessage(){
@@ -68,32 +63,39 @@
   </head>
 
   <body>
-    <canvas width="500" height="500" id="canvas"></canvas>
+
+    <div id="instructions">
+    <h1 id="title">Asteroids </h1>
+    <h1 id="paused" class="hidden">Game Paused </h1>
+    <h1 id="youlose" class="hidden"> Game Over </h1>
+    <h3>Get the green gun & press spacebar to shoot<br> Press v to pause<br>
+         <button onclick="game_view.paused = false;    
+          $('#instructions').addClass('hidden');
+          $('#save').addClass('hidden');
+          $('#highscores').addClass('hidden');
+          $('#scores').addClass('hidden');">Start</button>
+    </h3>
+    </div>
+    <canvas id="canvas"></canvas>
     <script>
       var canvas = document.getElementById('canvas');
       var c = canvas.getContext('2d');
     </script>
-
     <div id="points">Points:</div>
 
-
-
-
-
-    
     <div id="level" class="lev">Level: </div>
-    <div class="save">
-    <label>
-      Your Name
-    <input type="text" id="name">
-    </label>
-    <button onclick="saveScores()">save your scores</button><br><br>
-    <div id="message"></div>
+    <div class="save" id="save">
+      <label>
+        Your Name
+      <input type="text" id="name">
+      </label>
+      <button onclick="saveScores()">save your scores</button><br><br>
+      <div id="message"></div>
     </div>
 
-  
+    
 
-  <div class="highscores">
+  <div class="highscores" id="highscores">
   <h2 class="highscore-hedding">High Scores</h2>
   <ul>
   <% scores = @scores.sort{ |a, b| b.points <=> a.points } %>

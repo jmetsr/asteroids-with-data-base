@@ -2,63 +2,71 @@
         padding: 0px;
         margin: 0px;
         overflow: hidden;
-        background-image: url("http://upload.wikimedia.org/wikipedia/commons/a/a2/Polycyclic_Aromatic_Hydrocarbons_In_Space.jpg");
         color: yellow;
+        background-image: url("http://upload.wikimedia.org/wikipedia/commons/a/a2/Polycyclic_Aromatic_Hydrocarbons_In_Space.jpg");
       }
       li {
         list-style: none;
       }
       .scores { /*your scores*/
     
-        position: relative;
+        position: fixed;
         left: 50%;
         text-align: left;
-        margin-left: 260px;
+        margin-left: -200px;
         padding-top: 10px;
-        bottom: 650px;
-
-        
+        bottom: 200px;
+        z-index: 1; 
+                
       }
+
       .yourscoresheading {
         text-decoration: underline;
+        z-index: 1; 
+        
       }
+
       .lev {
-        position: relative;
-        left: 67%;
-        bottom: 20px;
+        position: absolute;
+        left: 80%;
+        bottom: 30px;
         text-align: left;
+        z-index: 1;
       }
       #points {
-        position: relative;
-        left: 67%;
-        bottom: 20px;
+        position: absolute;
+        left: 80%;
+        bottom: 50px;
         text-align: left;
+        z-index: 1;
       }
       
       #canvas {
-        border: 1px solid blue;
-        margin: 20px;
-        background: #C0C0C0;
-        position: relative;
-        left: 50%;
-        margin-left: -250px;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
       }
+
+       
       .save {
-        position: relative;
-        left: 50%;
-        margin-left: -240px;
-        bottom: 40px;
+        position: fixed;
+        left: 40%;
+        bottom: 10px;
+        z-index: 1; 
       }
       .highscores {
-        position: relative;
+        position: fixed;
         left: 50%;
-        margin-left: 260px;
-        bottom: 620px;
-        text-align: left;       
+        margin-left: -200px;
+        top: 150px;
+        text-align: left;
+        z-index: 1;   
+       
       }
       .highscore-hedding {
         text-decoration: underline;
-
+        z-index: 1; 
       }
       .start-button {
         height: 50px;
@@ -66,13 +74,24 @@
         position: relative;
         left: 20%;
       }
+
       h1 {
-        position: relative;
-        top: 40px;
+        position: fixed;
+        top: 0px;
         text-align: center;
+        z-index: 1;
+        left: 50%;
+        margin-left: -60px;
       }
+ 
       h3 {
         text-align: center;
-        position: relative;
-        top: 20px;
+        position: fixed;
+        top: 50px;
+        left: 50%;
+        margin-left: -170px;
+        z-index: 1;
+      }
+      .hidden {
+        display: none;
       }

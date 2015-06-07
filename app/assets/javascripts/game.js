@@ -16,8 +16,8 @@
     
   }
 
-  Game.DIM_X = 500;
-  Game.DIM_Y = 500;
+  Game.DIM_X = window.innerWidth-700;
+  Game.DIM_Y = window.innerHeight-400;
   Game.NUM_ASTEROIDS = 4;
   Game.prototype.dim_x = function(){
     return Game.DIM_X
@@ -41,20 +41,20 @@
       this.points += Math.round((Math.pow(this.asteroidArr.length,2.5)*80000)/this.steps)
     }
     this.steps = 0;
-    //this.block = new Asteroids.Block([200,200],this);
-    //this.blocks = [this.block];
+    // this.block = new Asteroids.Block([200,200],this);
+    // this.blocks = [this.block];
   }
 
   Game.prototype.draw = function(c){
-    c.clearRect(0,0,Game.DIM_X,Game.DIM_Y);
-
+      c.clearRect(0,0,Game.DIM_X,Game.DIM_Y);
+      // c.clearRect(0,0,600,600);
     for (var i = 0; i < this.allObjects().length;i++){
       this.allObjects()[i].draw(c);
     }
   }
 
   Game.prototype.randomPosition = function (){
-    return [Math.random() * 500, Math.random() * 500];
+    return [Math.random() * Game.DIM_X, Math.random() * Game.DIM_Y];
   }
 
   Game.prototype.moveObjects = function (){

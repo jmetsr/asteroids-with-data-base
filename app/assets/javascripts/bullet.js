@@ -7,8 +7,8 @@
     vel = [dir[0]*45, dir[1]*45];
     Asteroids.MovingObject.call(this, pos, vel, Bullet.RADIUS, Bullet.COLOR, game);
   }
-  Bullet.RADIUS = 2;
-  Bullet.COLOR = "black";
+  Bullet.RADIUS = 1;
+  Bullet.COLOR = "white";
   Asteroids.Util.inherits(Asteroids.MovingObject,Bullet);
 
   Asteroids.Bullet.prototype.move = function(){

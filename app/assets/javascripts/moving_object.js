@@ -3,21 +3,34 @@
     window.Asteroids = {};
   }
 
-  var MovingObject = Asteroids.MovingObject = function(pos,vel,radius,color, game){
+  var MovingObject = Asteroids.MovingObject = function(pos,vel,radius,color, game, img){
     this.pos = pos;
-    this.vel = vel;
+    this.vel = [vel[0]/2,vel[1]/2];
     this.radius = radius;
     this.color = color;
     this.game = game;
+    this.img = img
+    
   }
 
   MovingObject.prototype.draw = function (c) {
 
-   c.fillStyle = this.color;
-   c.beginPath();
-   c.arc(this.pos[0],this.pos[1],this.radius,0,2*Math.PI)
-   c.fill();
+    if (this.img != undefined){
+
+      var imageObj = new Image();
+      imageObj.src = this.img
+      var that = this
+    
+      c.drawImage(imageObj, this.pos[0], this.pos[1], this.radius, this.radius);
+    } else {
+       c.fillStyle = this.color;
+       c.beginPath();
+       c.arc(this.pos[0],this.pos[1],this.radius,0,2*Math.PI)
+       c.fill();
+    }
   }
+
+  
 
   MovingObject.prototype.move = function(){
     if (!(this instanceof Asteroids.Bullet)){
@@ -52,7 +65,14 @@
         this.relocate();
         Asteroids.game.call(this.game) //This resets the game
         game_view.paused = true
-        alert("GAME OVER!!!!!!!!!, press START to play again")
+        $("#instructions").removeClass('hidden')
+        $("#save").removeClass('hidden')
+        $("#highscores").removeClass('hidden')
+        $("#scores").removeClass('hidden')
+        $('#title').addClass('hidden')
+        $('#youlose').removeClass('hidden')
+        $('#paused').addClass('hidden')
+      
 
       }
     }

@@ -29,22 +29,35 @@
   GameView.prototype.bindKeyHandlers = function(){
     var that = this;
     key('left', function(){
-      game_view.game.ship.power([-7,0]);
+      game_view.game.ship.power([-4,0]);
     });
     key('up', function(){
-      game_view.game.ship.power([0,-7]);
+      game_view.game.ship.power([0,-4]);
     });
     key('right', function(){
-      game_view.game.ship.power([7,0]);
+      game_view.game.ship.power([4,0]);
     });
     key('down', function(){
-      game_view.game.ship.power([0,7]);
+      game_view.game.ship.power([0,4]);
     });
     key('v',function(){
         if (that.paused){
           that.paused = false;
-        } else {
+          $("#instructions").addClass('hidden')
+          $("#save").addClass('hidden')
+          $("#highscores").addClass('hidden')
+          $("#scores").addClass('hidden')
+
+ 
+        } else { 
           that.paused = true;
+          $("#instructions").removeClass('hidden')
+          $("#save").removeClass('hidden')
+          $("#highscores").removeClass('hidden')
+          $("#scores").removeClass('hidden')
+          $("#title").addClass('hidden')
+          $("#youlose").addClass('hidden')
+           $('#paused').removeClass('hidden')
         }
     });
   }

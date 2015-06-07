@@ -4,7 +4,7 @@
   }
 
   var Ship = Asteroids.Ship = function(pos,game){
-    Asteroids.MovingObject.call(this, pos, [0,0], Ship.RADIUS, Ship.COLOR, game);
+    Asteroids.MovingObject.call(this, pos, [0,0], Ship.RADIUS, Ship.COLOR, game, 'https://s-media-cache-ak0.pinimg.com/736x/bc/d0/e0/bcd0e08b54d2e6fa8ec11cb4523fb50a.jpg');
   }
 
   Ship.RADIUS = 10;

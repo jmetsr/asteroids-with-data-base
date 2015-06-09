@@ -9,15 +9,15 @@
     this.points = 0;
     this.steps = 0;
     
-    this.ship = new Asteroids.Ship(this.randomPosition(),this);
+    this.ship = new Asteroids.Ship([300,300],this);
     this.addAsteroids();
    
     console.log("restarted game")
     
   }
 
-  Game.DIM_X = window.innerWidth-700;
-  Game.DIM_Y = window.innerHeight-400;
+  Game.DIM_X = window.innerWidth;
+  Game.DIM_Y = window.innerHeight;
   Game.NUM_ASTEROIDS = 4;
   Game.prototype.dim_x = function(){
     return Game.DIM_X

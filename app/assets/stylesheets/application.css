@@ -1,7 +1,7 @@
       html, body, canvas {
         padding: 0px;
         margin: 0px;
- 
+        font-family: sans-serif;
         color: yellow;
         background-image: url("http://upload.wikimedia.org/wikipedia/commons/a/a2/Polycyclic_Aromatic_Hydrocarbons_In_Space.jpg");
       }
@@ -17,12 +17,14 @@
         padding-top: 10px;
         bottom: 200px;
         z-index: 1; 
+        font-family: sans-serif;
                 
       }
 
       .yourscoresheading {
         text-decoration: underline;
         z-index: 1; 
+        font-family: sans-serif;
         
       }
 
@@ -55,6 +57,7 @@
         z-index: 1; 
       }
       .highscores {
+        font-family: sans-serif;
         position: fixed;
         left: 50%;
         margin-left: -200px;
@@ -81,6 +84,7 @@
         z-index: 1;
         left: 50%;
         margin-left: -60px;
+        font-family: sans-serif;
       }
  
       h3 {
@@ -90,6 +94,7 @@
         left: 50%;
         margin-left: -170px;
         z-index: 1;
+        font-family: sans-serif;
       }
       .hidden {
         display: none;

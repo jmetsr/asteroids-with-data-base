@@ -34,7 +34,6 @@
     this.gun = new Asteroids.Gun([100,100],this);
     this.guns = [this.gun];
     this.level = Game.NUM_ASTEROIDS/2-1;
-    this.ship.immune = true
     var that = this;
     setTimeout(function(){ that.ship.immune = false }, 3000);
     if (this.steps != 0){

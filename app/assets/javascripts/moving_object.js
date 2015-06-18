@@ -42,13 +42,19 @@
 
   MovingObject.prototype.isCollidedWith = function(otherObject){
     if (!(otherObject instanceof Asteroids.Block)){
-      var distance = Math.pow(Math.pow((this.pos[0]-otherObject.pos[0]),2) + Math.pow((this.pos[1]-otherObject.pos[1]),2), 0.5);
-      if (distance < this.radius + otherObject.radius){
-        return true;
-      }
-      else{
-        return false;
-      }
+      //var distance = Math.pow(Math.pow((this.pos[0]-otherObject.pos[0]),2) + Math.pow((this.pos[1]-otherObject.pos[1]),2), 0.5);
+      // if (distance < this.radius + otherObject.radius){
+      //   return true;
+      // }
+      // else{
+      //   return false;
+      // }
+      var inBoundX1 = this.pos[0] < otherObject.pos[0] + otherObject.radius
+      var inBoundX2 = this.pos[0] + this.radius > otherObject.pos[0]
+      var inBoundY1 = this.pos[1] < otherObject.pos[1] + otherObject.radius
+      var inBoundY2 = this.pos[1] + this.radius > otherObject.pos[1]
+      return inBoundX1 && inBoundX2 && inBoundY1 && inBoundY2
+
     } else {
       var inTop = this.pos[1] - this.radius < otherObject.pos[1] + otherObject.radius*2;
       var inBottom = this.pos[1] + this.radius > otherObject.pos[1];

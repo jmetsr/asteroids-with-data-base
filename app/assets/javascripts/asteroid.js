@@ -7,7 +7,7 @@
     Asteroids.MovingObject.call(this, pos, Asteroids.Util.randomVec(), Asteroid.RADIUS, Asteroid.COLOR, game, 'http://www.sun.org/uploads/images/Itakawa_asteroid.jpg');
   }
   Asteroid.COLOR = "blue";
-  Asteroid.RADIUS = 30;
+  Asteroid.RADIUS = 50;
 
   Asteroids.Util.inherits(Asteroids.MovingObject,Asteroid);
 

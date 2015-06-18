@@ -11,11 +11,11 @@
       .scores { /*your scores*/
     
         position: fixed;
-        left: 50%;
+        left: 80%;
         text-align: left;
         margin-left: -200px;
-        padding-top: 10px;
-        top: 400px;
+    
+        top: 150px;
         z-index: 1; 
         font-family: sans-serif;
                 
@@ -59,7 +59,7 @@
       .highscores {
         font-family: sans-serif;
         position: fixed;
-        left: 50%;
+        left: 43%;
         margin-left: -200px;
         top: 150px;
         text-align: left;

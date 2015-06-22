@@ -18,7 +18,7 @@
 
   Game.DIM_X = window.innerWidth;
   Game.DIM_Y = window.innerHeight;
-  Game.NUM_ASTEROIDS = 4;
+  Game.NUM_ASTEROIDS = 1;
   Game.prototype.dim_x = function(){
     return Game.DIM_X
   }
@@ -33,7 +33,7 @@
     this.hasGun = false;
     this.gun = new Asteroids.Gun([100,100],this);
     this.guns = [this.gun];
-    this.level = Game.NUM_ASTEROIDS/2-1;
+    this.level = Game.NUM_ASTEROIDS;
     var that = this;
     setTimeout(function(){ that.ship.immune = false }, 3000);
     if (this.steps != 0){
@@ -105,7 +105,7 @@
       var index = this.asteroidArr.indexOf(obj);
       this.asteroidArr.splice(index, 1);
       if (this.asteroidArr.length == 0){
-        Game.NUM_ASTEROIDS += 2;
+        Game.NUM_ASTEROIDS += 1;
         this.addAsteroids();
       }
     }

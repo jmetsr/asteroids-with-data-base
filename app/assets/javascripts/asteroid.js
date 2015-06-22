@@ -4,7 +4,7 @@
   }
 
   var Asteroid = Asteroids.Asteroid = function(pos, game){
-    Asteroids.MovingObject.call(this, pos, Asteroids.Util.randomVec(), Asteroid.RADIUS, Asteroid.COLOR, game, 'http://www.sun.org/uploads/images/Itakawa_asteroid.jpg');
+    Asteroids.MovingObject.call(this, pos, Asteroids.Util.randomVec(), Asteroid.RADIUS, Asteroid.COLOR, game, 'http://www.macupdate.com/images/icons256/48979.png');
   }
   Asteroid.COLOR = "blue";
   Asteroid.RADIUS = 50;

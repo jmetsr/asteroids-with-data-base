@@ -4,7 +4,7 @@
   }
 
   var Ship = Asteroids.Ship = function(pos,game){
-    Asteroids.MovingObject.call(this, pos, [0,0], Ship.RADIUS, Ship.COLOR, game, 'https://s-media-cache-ak0.pinimg.com/736x/bc/d0/e0/bcd0e08b54d2e6fa8ec11cb4523fb50a.jpg');
+    Asteroids.MovingObject.call(this, pos, [0,0], Ship.RADIUS, Ship.COLOR, game, 'https://www.scirra.com/images/articles/enemy_spaceship.png');
   }
 
   Ship.RADIUS = 44;
@@ -25,8 +25,10 @@
     this.game.points = 0;
   }
   Ship.prototype.power = function(impulse){
-    this.vel = impulse;
+    this.vel[0] += impulse[0];
+    this.vel[1] += impulse[1];
   }
+
   Ship.prototype.fireBullet = function(){
     if ((this.direction()[0] !== 0) || (this.direction()[1] !== 0)){
       var bullet = new Asteroids.Bullet(this.pos.slice(), this.direction().slice(), this.game)

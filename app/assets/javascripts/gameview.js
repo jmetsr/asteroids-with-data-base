@@ -29,16 +29,16 @@
   GameView.prototype.bindKeyHandlers = function(){
     var that = this;
     key('left', function(){
-      game_view.game.ship.power([-8,0]);
+      game_view.game.ship.power([-1,0]);
     });
     key('up', function(){
-      game_view.game.ship.power([0,-8]);
+      game_view.game.ship.power([0,-1]);
     });
     key('right', function(){
-      game_view.game.ship.power([8,0]);
+      game_view.game.ship.power([1,0]);
     });
     key('down', function(){
-      game_view.game.ship.power([0,8]);
+      game_view.game.ship.power([0,1]);
     });
     key('v',function(){
         if (that.paused){
